@@ -1,0 +1,56 @@
+﻿@model ManageShopWeb.Product
+
+@{
+    ViewData["Title"] = "EditProduct";
+}
+
+<h1>EditProduct</h1>
+<a href="/Shop/Bills">Bills</a>
+<a href="/Shop/Product">Product</a>
+<a href="/Shop/Customer">Customer</a>
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form  method="post" action="/Shop/EditProduct1">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProductId" value="@ViewBag.p.ProductId" />
+            <div class="form-group">
+                <label asp-for="ProductName" class="control-label"></label>
+                <input asp-for="ProductName" name="ProductName" class="form-control" value="@ViewBag.p.ProductName" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Chip" class="control-label"></label>
+                <input asp-for="Chip" name="Chip" class="form-control" value="@ViewBag.p.Chip" />
+                <span asp-validation-for="Chip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OperatingSystem" class="control-label"></label>
+                <input asp-for="OperatingSystem" name="OperatingSystem" class="form-control" value="@ViewBag.p.OperatingSystem" />
+                <span asp-validation-for="OperatingSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneScreen" class="control-label"></label>
+                <input asp-for="PhoneScreen" name="PhoneScreen" class="form-control" value="@ViewBag.p.PhoneScreen" />
+                <span asp-validation-for="PhoneScreen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" name="Price" class="form-control" value="@ViewBag.p.Price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Product">Back to List</a>
+</div>
+

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ManageShopWeb.Employee>
+
+@{
+    ViewData["Title"] = "Employee";
+}
+
+<h1>Employee</h1>
+    <form method="get" action="/Shop/CreateEmployee">
+                       
+                        <input type="submit" value="Create">
+                    </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Password
+            </th>
+            
+            <th>
+                Status
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in ViewBag.em) {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                    @item.Address
+            </td>
+            <td>
+                    @item.Email
+            </td>
+            <td>
+                    @item.Password
+            </td>
+            <td>
+                    @if (@item.Status == 1) {
+                            <p>Active</p>
+                        } else {
+                            <p>Banned</p>
+                        }
+                    
+            </td>
+          
+                <td>
+                    <form method="post" action="/Shop/EditEmployee">
+                        @Html.AntiForgeryToken()
+                        <input hidden name="EmployeeId" value="@item.EmployeeId">
+                        <input type="submit" value="Edit">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/Shop/DeleteEmployee">
+                        @Html.AntiForgeryToken()
+                        <input hidden name="EmployeeId" value="@item.EmployeeId">
+                        <input type="submit" value="Delete">
+                    </form>
+
+
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

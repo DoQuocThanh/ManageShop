@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>Cart</h1>
+
+<a href="/Shop/Bills">Bills</a>
+<a href="/Shop/Product">Product</a>
+<a href="/Shop/Customer">Customer</a>
+
+<form method="post" action="/Shop/Cart">
+    @Html.AntiForgeryToken()
+    <label for="ProductID">Product ID</label>
+    <input name="ProductID" type="number">
+    <label for="Quantity">Quantity</label>
+    <input name="Quantity" type="number">
+    <input type="submit" value="Add to Cart">
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.c)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.ProductID</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form method="post" action="/Shop/CreateBill">
+    @Html.AntiForgeryToken()
+    <label for="CustomerId">Customer ID</label>
+    <input name="CustomerId" type="number">
+    <input type="submit" value="Create Bill">
+</form>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ManageShopWeb.Bill>
+
+@{
+    ViewData["Title"] = "Bills";
+}
+
+<h1>Bills</h1>
+<a href="/Shop/Bills">Bills</a>
+<a href="/Shop/Product">Product</a>
+<a href="/Shop/Customer">Customer</a>
+
+
+<a href="/Shop/Cart">Cart</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                BillID
+            </th>
+            <th>
+                CustomerId
+            </th>
+            <th>
+               EmployeeId
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+               
+            </th>
+          
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in ViewBag.b) {
+        <tr>
+                <td>
+                    @item.BillId
+                </td>
+                <td>
+                    @item.CustomerId
+                </td>
+                <td>
+                    @item.EmployeeId
+                </td>
+                <td>
+                    @item.Time
+                </td>
+                
+                <td>
+                    <form method="post" action="/Shop/BillDetail">
+                        @Html.AntiForgeryToken()
+                        <input hidden name="billId" value="@item.BillId">
+                        <input type="submit" value="View">
+                    </form>
+                </td>
+              
+        </tr>
+}
+    </tbody>
+</table>

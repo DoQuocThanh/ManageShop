@@ -1,0 +1,64 @@
+﻿
+
+
+
+<h1>Customer</h1>
+
+<form method="get" action="/Shop/CreateCustomer">
+                       
+                        <input type="submit" value="Create">
+                    </form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                CustomerId
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                AmountBuy
+            </th>
+            <th></th
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in ViewBag.c) {
+        <tr>
+            <td>
+                @item.CustomerId
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Address
+            </td>
+            <td>
+               @item.AmountBuy
+            </td>
+           <td>
+                    <form method="post" action="/Shop/EditCustomer">
+                        @Html.AntiForgeryToken()
+                        <input hidden name="CustomerId" value="@item.CustomerId">
+                        <input type="submit" value="Edit">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/Shop/DeleteCustomer">
+                        @Html.AntiForgeryToken()
+                        <input hidden name="CustomerId" value="@item.CustomerId">
+                        <input type="submit" value="Delete">
+                    </form>
+                
+                    
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

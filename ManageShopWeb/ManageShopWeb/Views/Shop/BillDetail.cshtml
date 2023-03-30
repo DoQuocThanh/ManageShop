@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ManageShopWeb.BillDetail>
+
+@{
+    ViewData["Title"] = "BillDetail";
+}
+
+<h1>BillDetail</h1>
+<a href="/Shop/Bills">Bills</a>
+<a href="/Shop/Product">Product</a>
+<a href="/Shop/Customer">Customer</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                BillDetailId
+            </th>
+            <th>
+                BillId
+            </th>
+            <th>
+                ProductName
+            </th>
+            <th>
+                Quantity
+
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in ViewBag.bd) {
+        <tr>
+            <td>
+                @item.BillDetailId
+            </td>
+            <td>
+                    @item.BillId
+            </td>
+            <td>
+                    @item.ProductName
+            </td>
+            <td>
+                    @item.Quantity
+            </td>
+                <td>
+                    @item.Price
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

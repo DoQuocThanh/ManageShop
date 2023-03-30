@@ -1,0 +1,21 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form</title>
+</head>
+<body>
+	<h1>Login Form</h1>
+	<form method="post" action="/Shop/Login">
+		@Html.AntiForgeryToken()
+		<label for="email">Email:</label>
+		<input type="text" id="email" name="email" required><br><br>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="pass" required><br><br>
+		<input type="submit" value="Submit">
+	</form>
+	<h4 style="color: red">@ViewBag.msg</h4>
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "Product";
+}
+
+<h1>Product</h1>
+<a href="/Shop/Bills">Bills</a>
+<a href="/Shop/Product">Product</a>
+<a href="/Shop/Customer">Customer</a>
+
+    <form method="get" action="/Shop/CreateProduct">
+                       
+                        <input type="submit" value="Create">
+                    </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ProductName
+            </th>
+            <th>
+                Chip
+            </th>
+            <th>
+                OperatingSystem
+            </th>
+            <th>
+                PhoneScreen
+            </th>
+            <th>
+                Price
+            </th>
+            <th ></th>
+            <th ></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Product item in ViewBag.p) {
+        <tr>
+            <td>
+                    @item.ProductName
+            </td>
+            <td>
+                    @item.Chip
+            </td>
+            <td>
+                    @item.OperatingSystem
+            </td>
+            <td>
+                    @item.PhoneScreen
+            </td>
+            <td>
+                    @item.Price
+            </td>
+            <td>
+                    <form method="post" action="/Shop/EditProduct">
+                        @Html.AntiForgeryToken()
+                        <input hidden name="productID" value="@item.ProductId">
+                        <input type="submit" value="Edit">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/Shop/DeleteProduct">
+                        @Html.AntiForgeryToken()
+                        <input hidden name="productID" value="@item.ProductId">
+                        <input type="submit" value="Delete">
+                    </form>
+                
+                    
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
